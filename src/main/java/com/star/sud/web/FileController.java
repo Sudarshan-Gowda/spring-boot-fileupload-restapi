@@ -22,7 +22,12 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 import org.springframework.web.servlet.support.ServletUriComponentsBuilder;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
+import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.JsonMappingException;
+import com.fasterxml.jackson.databind.ObjectMapper;
 import com.star.sud.bean.UploadFileResponse;
+import com.star.sud.bean.User;
 import com.star.sud.service.FileStorageService;
 
 @RestController
@@ -59,11 +64,42 @@ public class FileController {
 			logger.info("Could not determine file type.");
 		}
 
-		if (contentType == null) 
+		if (contentType == null)
 			contentType = "application/octet-stream";
 
 		return ResponseEntity.ok().contentType(MediaType.parseMediaType(contentType))
 				.header(HttpHeaders.CONTENT_DISPOSITION, "attachment; filename=\"" + resource.getFilename() + "\"")
 				.body(resource);
 	}
+
+	@PostMapping("/singlefileuploadWithText")
+	public UploadFileResponse uploadFileWithText(@RequestParam("file") MultipartFile file,
+			@RequestParam("user") String userJson) throws JsonMappingException, JsonProcessingException {
+
+		logger.info("uploadFileWithText");
+
+		User user = new ObjectMapper().readValue(userJson, User.class);
+		logger.info("After converting to DTO :: " + user);
+
+		String fileName = fileStorageService.storeFile(file);
+		String fileDownloadUri = ServletUriComponentsBuilder.fromCurrentContextPath().path("/downloadFile/")
+				.path(fileName).toUriString();
+
+		return new UploadFileResponse(fileName, fileDownloadUri, file.getContentType(), file.getSize());
+	}
+
+	@PostMapping("/multiplefileuploadWithText")
+	public List<UploadFileResponse> uploadMultipleFilesWithText(@RequestParam("files") MultipartFile[] files,
+			@RequestParam("users") String usersJson) throws JsonMappingException, JsonProcessingException {
+
+		logger.info("uploadMultipleFilesWithText");
+
+		List<User> users = new ObjectMapper().readValue(usersJson, new TypeReference<List<User>>() {
+		});
+
+		logger.info("After converting to DTO :: " + users);
+
+		return Arrays.asList(files).stream().map(file -> uploadFile(file)).collect(Collectors.toList());
+	}
+
 }
