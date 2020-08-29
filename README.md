@@ -26,8 +26,8 @@ File -> Import -> Maven -> Existing Maven project -> spring-boot-fileupload-rest
 ## Steps to test the application:
 
 ### To Run the Spring MVC Application:
-`step 1`: Download this repository & do maven import.<br>    
-`step 2`: Go to the main class file and run as Java application. <br> or execute commands `mvn spring-boot:run` <br>
+`step 1`: Download this repository & do maven import <br>    
+`step 2`: Go to the main class file and run as Java application or execute commands `mvn spring-boot:run` <br> <br>
 `step 3`: Once the application starts, By default application will be deployed in 8080 port, and you can access it by using http://localhost:8080/ <br>
 
 #### To Test the exposed Rest API's
