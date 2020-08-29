@@ -19,7 +19,7 @@ File -> Import -> Maven -> Existing Maven project -> spring-boot-fileupload-rest
  
 ## Looking for something in particular?
 
-|spring-state-machine  | Class or Java property files  |
+|File Upload Example  | Class or Java property files  |
 |--------------------------|---|
 |Application Configuration File | [application.properties](https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/blob/master/src/main/resources/application.properties) |
 
