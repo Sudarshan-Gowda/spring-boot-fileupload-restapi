@@ -59,6 +59,23 @@ Lets suppose you are the consumer and you need to consume the API's provided by 
 <img src="https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/blob/master/docs/Pic5.png"/>
 
 
+#### File upload along with String/Json as well 
+<img src="https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/blob/master/docs/Pic6.png"/>
+<br>
+
+<img src="https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/blob/master/docs/Pic7.png"/>
+<br>
+
+#### Source Code for File upload along with String/Json 
+<img src="https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/blob/master/docs/Pic8.png"/>
+<br>
+
+#### Source Code for File upload along with String/Json 
+
+Consumer client:
+<img src="https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/blob/master/docs/Pic10.png"/>
+<br>
+
 # Contributing
 
 The [issue tracker](https://github.com/Sudarshan-Gowda/spring-boot-fileupload-restapi/issues) is the preferred channel for bug reports, features requests and submitting pull requests.
